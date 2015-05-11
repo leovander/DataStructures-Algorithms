@@ -1,7 +1,9 @@
 /*
-  SinglyLinkedList
+  Singly Linked List
 */
+
 #include "SinglyLinkedList.h"
+#include <iostream>
 
 SinglyLinkedList::SinglyLinkedList() {
   head = NULL;
@@ -15,7 +17,7 @@ void SinglyLinkedList::insertFront(int value) {
   if(head == NULL) {
     head = newNode;
   } else {
-    newNode.setNext(head);
+    newNode->setNext(head);
     head = newNode;
   }
 
@@ -29,20 +31,20 @@ bool SinglyLinkedList::deleteNode(int value) {
 
   Node *current;
 
-  if(head.value() == value) {
+  if(head->value() == value) {
     current = head;
-    head = head.getNext();
+    head = head->getNext();
     delete current;
     current = NULL;
     return true;
   }
 
-  current = head.getNext();
+  current = head->getNext();
   Node *tail = head;
 
   while(current != NULL) {
-    if(current.value() == value) {
-      tail.setNext(current.getNext());
+    if(current->value() == value) {
+      tail->setNext(current->getNext());
       delete current;
       current = NULL;
       length--;
@@ -50,7 +52,7 @@ bool SinglyLinkedList::deleteNode(int value) {
     }
 
     tail = current;
-    current = current.getNext();
+    current = current->getNext();
   }
 
   return false;
@@ -61,8 +63,39 @@ SinglyLinkedList::~SinglyLinkedList() {
 
   while(head != NULL) {
     current = head;
-    head = head.getNext();
+    head = head->getNext();
     delete current;
     current = NULL;
   }
+}
+
+void SinglyLinkedList::printList() {
+  Node *current = head;
+
+  while(current != NULL) {
+    std::cout << current->value() << " ";
+
+    current = current->getNext();
+  }
+
+  std::cout << std::endl;
+}
+
+int main() {
+  SinglyLinkedList *list = new SinglyLinkedList();
+
+  list->insertFront(6);
+  list->insertFront(9);
+  list->insertFront(10);
+  list->insertFront(13);
+
+  std::cout << "Expected: 13 10 9 6\n";
+  list->printList();
+
+  list->deleteNode(9);
+
+  std::cout << "Expected: 13 10 6\n";
+  list->printList();
+
+  return 0;
 }

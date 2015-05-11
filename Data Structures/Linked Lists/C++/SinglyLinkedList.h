@@ -1,3 +1,7 @@
+/*
+  Singly Linked List - Header
+*/
+
 #include "Node.h"
 
 #ifndef SINGLYLINKEDLIST_H
@@ -9,9 +13,10 @@ public:
   ~SinglyLinkedList();
   void insertFront(int value);
   bool deleteNode(int value);
+  void printList();
 private:
   Node *head;
   int length;
-}
+};
 
 #endif
