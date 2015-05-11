@@ -8,7 +8,7 @@ public:
   SinglyLinkedList();
   ~SinglyLinkedList();
   void insertFront(int value);
-  void deleteNode(int value);
+  bool deleteNode(int value);
 private:
   Node *head;
   int length;

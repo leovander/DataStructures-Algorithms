@@ -8,6 +8,7 @@ public:
   const value();
   void setData(int value);
   void setNext(Node *next);
+  Node *getNext();
 private:
   int data;
   Node *next;
