@@ -29,7 +29,7 @@ bool SinglyLinkedList::deleteNode(int value) {
 
   Node *current;
 
-  if(head.getValue() == value) {
+  if(head.value() == value) {
     current = head;
     head = head.getNext();
     delete current;
@@ -41,7 +41,7 @@ bool SinglyLinkedList::deleteNode(int value) {
   Node *tail = head;
 
   while(current != NULL) {
-    if(current.getValue() == value) {
+    if(current.value() == value) {
       tail.setNext(current.getNext());
       delete current;
       current = NULL;

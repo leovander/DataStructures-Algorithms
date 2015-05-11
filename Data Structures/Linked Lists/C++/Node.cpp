@@ -5,7 +5,7 @@ Node::Node(int value) {
   data = value;
 }
 
-const int Node::getValue() {
+const int Node::value() {
   return data;
 }
 

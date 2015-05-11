@@ -5,7 +5,7 @@ class Node {
 public:
   Node(int value);
   ~Node();
-  const value();
+  const int value();
   void setData(int value);
   void setNext(Node *next);
   Node *getNext();
