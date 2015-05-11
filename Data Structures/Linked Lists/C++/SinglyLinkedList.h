@@ -1,4 +1,4 @@
-#include "SinglyLinkedNode.h"
+#include "Node.h"
 
 #ifndef SINGLYLINKEDLIST_H
 #define SINGLYLINKEDLIST_H

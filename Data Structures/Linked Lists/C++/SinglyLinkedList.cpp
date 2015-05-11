@@ -25,27 +25,44 @@ void SinglyLinkedList::insertFront(int value) {
 bool SinglyLinkedList::deleteNode(int value) {
   if(head == NULL) {
     return false;
-  } else {
-    Node *current = head.getNext();
-    Node *tail = head;
+  }
 
-    while(current != NULL) {
-      if(current.value() == value) {
-        tail.setNext(current.getNext());
-        delete current;
-        current = NULL;
-        length--;
-        return true;
-      }
+  Node *current;
 
-      tail = current;
-      current = current.getNext();
+  if(head.value() == value) {
+    current = head;
+    head = head.getNext();
+    delete current;
+    current = NULL;
+    return true;
+  }
+
+  current = head.getNext();
+  Node *tail = head;
+
+  while(current != NULL) {
+    if(current.value() == value) {
+      tail.setNext(current.getNext());
+      delete current;
+      current = NULL;
+      length--;
+      return true;
     }
 
-    return false;
+    tail = current;
+    current = current.getNext();
   }
+
+  return false;
 }
 
 SinglyLinkedList::~SinglyLinkedList() {
+  Node *current;
 
+  while(head != NULL) {
+    current = head;
+    head = head.getNext();
+    delete current;
+    current = NULL;
+  }
 }

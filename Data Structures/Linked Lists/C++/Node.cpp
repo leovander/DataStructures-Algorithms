@@ -1,4 +1,4 @@
-#include "SinglyLinkedNode.h"
+#include "Node.h"
 
 Node::Node(int value) {
   next = NULL;
@@ -14,7 +14,7 @@ void Node::setData(int value) {
 }
 
 void Node::setNext(Node *next) {
-  this.next = next;
+  this->next = next;
 }
 
 Node Node::*getNext() {
