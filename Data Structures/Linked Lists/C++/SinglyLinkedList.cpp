@@ -1,32 +1,29 @@
 /*
-  SinglyLinkedList and Node Definitions
+  SinglyLinkedList
 */
+#include "SinglyLinkedList.h"
 
-class Node {
-public:
-  Node(int value);
-  ~Node();
-  const value();
-  void setData(int value);
-  void setNext(Node *next);
-private:
-  int data;
-  Node *next;
+SinglyLinkedList::SinglyLinkedList() {
+  head = NULL;
+  length = 0;
 }
 
-Node::Node(int value) {
-  next = NULL;
-  data = value;
+void SinglyLinkedList::insertFront(int value) {
+  Node *newNode;
+  newNode = new Node(value);
+
+  if(head == NULL) {
+    head = newNode;
+  } else {
+    newNode.setNext(head);
+    head = newNode;
+  }
 }
 
-const int Node::getValue() {
-  return data;
+void SinglyLinkedList::deleteNode(int value) {
+
 }
 
-void Node::setData(int value) {
-  data = value;
-}
+SinglyLinkedList::~SinglyLinkedList() {
 
-void Node::setNext(Node *next) {
-  this.next = next;
 }
