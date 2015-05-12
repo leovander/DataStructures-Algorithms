@@ -3,7 +3,8 @@
 */
 
 #include "SinglyLinkedList.h"
-#include <iostream>
+#include <assert.h>
+#include <string>
 
 SinglyLinkedList::SinglyLinkedList() {
   head = NULL;
@@ -69,16 +70,21 @@ SinglyLinkedList::~SinglyLinkedList() {
   }
 }
 
-void SinglyLinkedList::printList() {
+std::string SinglyLinkedList::printList() {
   Node *current = head;
+  std::string output = "";
 
   while(current != NULL) {
-    std::cout << current->value() << " ";
+    output.append(std::to_string(current->value()));
+
+    if(current->getNext() != NULL) {
+      output.append(" ");
+    }
 
     current = current->getNext();
   }
 
-  std::cout << std::endl;
+  return output;
 }
 
 int main() {
@@ -90,12 +96,14 @@ int main() {
   list->insertFront(13);
 
   std::cout << "Expected: 13 10 9 6\n";
-  list->printList();
+  assert(list->printList() == "13 10 9 6");
+  std::cout << list->printList();
 
   list->deleteNode(9);
 
-  std::cout << "Expected: 13 10 6\n";
-  list->printList();
+  std::cout << "\nExpected: 13 10 6\n";
+  assert(list->printList() == "13 10 6");
+  std::cout << list->printList() << std::endl;
 
   return 0;
 }

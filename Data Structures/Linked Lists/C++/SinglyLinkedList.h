@@ -3,6 +3,7 @@
 */
 
 #include "Node.h"
+#include <iostream>
 
 #ifndef SINGLYLINKEDLIST_H
 #define SINGLYLINKEDLIST_H
@@ -13,7 +14,7 @@ public:
   ~SinglyLinkedList();
   void insertFront(int value);
   bool deleteNode(int value);
-  void printList();
+  std::string printList();
 private:
   Node *head;
   int length;
