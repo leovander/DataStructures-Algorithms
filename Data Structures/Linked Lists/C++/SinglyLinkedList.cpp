@@ -37,6 +37,7 @@ bool SinglyLinkedList::deleteNode(int value) {
     head = head->getNext();
     delete current;
     current = NULL;
+    length--;
     return true;
   }
 
