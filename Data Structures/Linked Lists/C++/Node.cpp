@@ -38,7 +38,7 @@ void Node::setData(int value) {
 /**
  * Progressing to the next Node using next pointer
  * @method Node::setNext
- * @param  {pointer} next: pointer to the next Node 
+ * @param  {pointer} next: pointer to the next Node
  */
 void Node::setNext(Node *next) {
   this->next = next;
@@ -47,7 +47,7 @@ void Node::setNext(Node *next) {
 /**
  * Getter function to return the next pointer of the Node
  * @method Node::getNext
- * @return {pointer} next: 
+ * @return {pointer} next:
  */
 Node * Node::getNext() {
   return next;
