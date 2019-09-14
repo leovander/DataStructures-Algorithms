@@ -4,8 +4,8 @@
     Worst Case: O(n log n)
 */
 function merge(A, p, q, r) {
-  var n1 = q - p + 1; //3
-  var n2 = r - q; // 3
+  var n1 = q - p + 1;
+  var n2 = r - q;
 
   var L = [];
   var R = [];
@@ -46,16 +46,20 @@ function merge(A, p, q, r) {
     k++;
   }
 
-  console.log(A);
+  return A;
 }
 
 function mergeSort(A, p, r) {
+  var B = A;
+  
   if(p < r) {
     var q = (p + r) / 2;
-    mergeSort(A, p, q);
-    mergeSort(A, q + 1, r);
-    merge(A, p, q, r);
+    B = mergeSort(B, p, q);
+    B = mergeSort(B, q + 1, r);
+    B = merge(B, p, q, r);
   }
+  
+  return B;
 }
 
 console.log(mergeSort([2, 4, 5, 7, 1, 2, 3, 6], 0, 7));
