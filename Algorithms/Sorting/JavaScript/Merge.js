@@ -53,7 +53,7 @@ function mergeSort(A, p, r) {
   var B = A;
   
   if(p < r) {
-    var q = (p + r) / 2;
+    var q = Math.floor((p + r) / 2);
     B = mergeSort(B, p, q);
     B = mergeSort(B, q + 1, r);
     B = merge(B, p, q, r);
