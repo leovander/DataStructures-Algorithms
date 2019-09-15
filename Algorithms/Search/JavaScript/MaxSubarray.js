@@ -83,7 +83,7 @@ function findMaxCrossingSub(A, low, mid, high) {
     var rightSum = -Number.MAX_VALUE;
     sum = 0;
 
-    for(var i = mid + 1; i < high + 1; i++) {
+    for(var i = mid + 1; i <= high; i++) {
         sum += A[i];
 
         if(sum > rightSum) {
@@ -92,7 +92,7 @@ function findMaxCrossingSub(A, low, mid, high) {
         }
     }
 
-    return [maxLeft, maxRight, leftSum + rightSum]
+    return [maxLeft, maxRight, (leftSum + rightSum)];
 }
 
 var arr = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7];
@@ -103,24 +103,20 @@ var arr = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7];
     Logarthimic
 */
 function findMaxSub(A, low, high) {
-    var leftLow, leftHigh, leftSum;
-    var rightLow, rightHigh, rightSum;
-    var crossLow, crossHigh, crossSum;
-
     if(low == high) {
         return [low, high, A[low]];
     } else {
-        mid = Math.floor((low + high) / 2);
-        [leftLow, leftHigh, leftSum] = findMaxSub(A, low, mid);
-        [rightLow, rightHigh, rightSum] = findMaxSub(A, mid + 1, high);
-        [crossLow, crossHigh, crossSum] = findMaxCrossingSub(A, low, mid, high);
+        var mid = Math.floor((low + high) / 2);
+        var left = findMaxSub(A, low, mid);
+        var right = findMaxSub(A, mid + 1, high);
+        var cross = findMaxCrossingSub(A, low, mid, high);
 
-        if(leftSum >= rightSum && leftSum >= crossSum) {
-            return [leftLow, leftHigh, leftSum];
-        } else if(rightSum >= leftSum && rightSum >= crossSum) {
-            return [rightLow, rightHigh, rightSum];
+        if(left[2] >= right[2] && left[2] >= cross[2]) {
+            return left;
+        } else if(right[2] >= left[2] && right[2] >= cross[2]) {
+            return right
         } else {
-            return [crossLow, crossHigh, crossSum];
+            return cross;
         }
     }
 }
